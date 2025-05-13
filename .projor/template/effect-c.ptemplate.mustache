@@ -1,0 +1,81 @@
+{
+    "forEach": "effects",
+    "filename": "src/effectlib/{{snakeCase name}}.c"
+}
+---
+#include "effectlib/{{snakeCase name}}.h"
+
+{{#if parameters}}
+/** Parses command line options for {{name}} effect, non-zero return indicates parse error. */
+int manyfx_parse_{{snakeCase name}}_params(
+    int argc,
+    char** argv,
+    {{snakeCase name}}_params_t* params
+) {
+    {{#each parameters}}
+    {{#if (equals type "float")}}
+    params->{{snakeCase name}} = 0.0;
+
+    /* Look for --{{kebabCase name}} <float> */
+    for (int i = 0; i < argc; i++) {
+        if (strcmp(argv[i], "--{{kebabCase name}}") == 0) {
+            if (i + 1 >= argc) {
+                fprintf(stderr, "Error: --{{kebabCase name}} requires a float argument\n");
+                return 1;
+            }
+            params->{{snakeCase name}} = atof(argv[i + 1]);
+            i++;
+        }
+    }
+    {{/if}}
+    {{#if (equals type "int")}}
+    params->{{snakeCase name}} = 0;
+
+    /* Look for --{{kebabCase name}} <int> */
+    for (int i = 0; i < argc; i++) {
+        if (strcmp(argv[i], "--{{kebabCase name}}") == 0) {
+            if (i + 1 >= argc) {
+                fprintf(stderr, "Error: --{{kebabCase name}} requires an int argument\n");
+                return 1;
+            }
+            params->{{snakeCase name}} = atoi(argv[i + 1]);
+            i++;
+        }
+    }
+    {{/if}}
+    {{#if (equals type "bool")}}
+    params->{{snakeCase name}} = false;
+
+    /* Look for --{{kebabCase name}} or --no-{{kebabCase name}} */
+    for (int i = 0; i < argc; i++) {
+        if (strcmp(argv[i], "--{{kebabCase name}}") == 0) {
+            params->{{snakeCase name}} = true;
+        }
+        if (strcmp(argv[i], "--no-{{kebabCase name}}") == 0) {
+            params->{{snakeCase name}} = false;
+        }
+    }
+    {{/if}}
+    {{/each}}
+
+    return 0;
+}
+{{/if}}
+
+{{#if parameters}}
+/** Applies the {{name}} effect */
+void manyfx_apply_{{snakeCase name}}(
+    sound_file_44k_stereo_t* audio_in,
+    sound_file_44k_stereo_t* audio_out,
+    {{snakeCase name}}_params_t* params
+) {
+{{/if}}
+{{#unless parameters}}
+/** Applies the {{name}} effect */
+void manyfx_apply_{{snakeCase name}}(
+    sound_file_44k_stereo_t* audio_in,
+    sound_file_44k_stereo_t* audio_out
+) {
+{{/unless}}
+    {{{impl}}}
+}

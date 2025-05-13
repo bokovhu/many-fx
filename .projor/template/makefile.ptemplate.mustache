@@ -1,0 +1,55 @@
+{
+    "map": {
+        "effects": "effects"
+    },
+    "filename": "Makefile"
+}
+---
+.RECIPEPREFIX = >
+CC = gcc
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Linux)
+    LDFLAGS = -lm -lgomp
+    EXE_EXT =
+else
+    LDFLAGS = -lgomp
+    EXE_EXT = .exe
+endif
+CFLAGS = -Wall -Wextra -Werror -std=c11 -Iinclude -fopenmp
+all : cli-binaries
+>   echo "Full build complete."
+
+cli-binaries : {{#each effects}}dist/{{kebabCase name}}{{#unless @last}} {{/unless}}{{/each}}
+>   echo "Built CLI binaries."
+
+{{#each effects}}
+dist/{{kebabCase name}} : build/cli/{{snakeCase name}}/{{kebabCase name}}$(EXE_EXT) dist
+>   cp build/cli/{{snakeCase name}}/{{kebabCase name}}$(EXE_EXT) dist/{{kebabCase name}}$(EXE_EXT)
+
+build/cli/{{snakeCase name}}/{{kebabCase name}}$(EXE_EXT) : src/cli/{{snakeCase name}}/main.c build/cli/{{snakeCase name}} build/effectlib/{{snakeCase name}}.o build/preprocess/preprocess.o build/wavwrite/wavwrite.o
+>   $(CC) src/cli/{{snakeCase name}}/main.c build/effectlib/{{snakeCase name}}.o build/preprocess/preprocess.o build/wavwrite/wavwrite.o -o build/cli/{{snakeCase name}}/{{kebabCase name}}$(EXE_EXT) $(CFLAGS) $(LDFLAGS)
+
+build/effectlib/{{snakeCase name}}.o : src/effectlib/{{snakeCase name}}.c build/effectlib
+>   $(CC) -c src/effectlib/{{snakeCase name}}.c -o build/effectlib/{{snakeCase name}}.o $(CFLAGS)
+
+build/cli/{{snakeCase name}} :
+>   mkdir -p build/cli/{{snakeCase name}}
+
+{{/each}}
+build/preprocess/preprocess.o : src/preprocess/preprocess.c build/preprocess
+>   $(CC) -c src/preprocess/preprocess.c -o build/preprocess/preprocess.o $(CFLAGS)
+
+build/wavwrite/wavwrite.o : src/wavwrite/wavwrite.c build/wavwrite
+>   $(CC) -c src/wavwrite/wavwrite.c -o build/wavwrite/wavwrite.o $(CFLAGS)
+
+build/effectlib :
+>   mkdir -p build/effectlib
+
+build/preprocess :
+>   mkdir -p build/preprocess
+
+build/wavwrite :
+>   mkdir -p build/wavwrite
+
+dist :
+>   mkdir -p dist

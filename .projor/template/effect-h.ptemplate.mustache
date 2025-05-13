@@ -1,0 +1,54 @@
+{
+    "forEach": "effects",
+    "filename": "include/effectlib/{{snakeCase name}}.h"
+}
+---
+#ifndef {{constantCase name}}_H
+#define {{constantCase name}}_H
+
+#include "preprocess/preprocess.h"
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+{{#if parameters}}
+/** Parameters for {{name}} effect */
+typedef struct {
+    {{#each parameters}}
+    {{#if (equals type "float")}}
+    float {{snakeCase name}};
+    {{/if}}
+    {{#if (equals type "int")}}
+    int {{snakeCase name}};
+    {{/if}}
+    {{#if (equals type "bool")}}
+    bool {{snakeCase name}};
+    {{/if}}
+    {{/each}}
+} {{snakeCase name}}_params_t;
+
+/** Parses command line options for {{name}} effect, non-zero return indicates parse error. */
+int manyfx_parse_{{snakeCase name}}_params(
+    int argc,
+    char** argv,
+    {{snakeCase name}}_params_t* params
+);
+
+/** Applies the {{name}} effect */
+void manyfx_apply_{{snakeCase name}}(
+    sound_file_44k_stereo_t* audio_in,
+    sound_file_44k_stereo_t* audio_out,
+    {{snakeCase name}}_params_t* params
+);
+{{/if}}
+
+{{#unless parameters}}
+/** Applies the {{name}} effect */
+void manyfx_apply_{{snakeCase name}}(
+    sound_file_44k_stereo_t* audio_in,
+    sound_file_44k_stereo_t* audio_out
+);
+{{/unless}}
+
+#endif

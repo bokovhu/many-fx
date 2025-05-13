@@ -1,0 +1,13 @@
+id: s/Effect
+name: Effect
+description: An audio effect
+fields:
+  - name: impl
+    description: The implementation of the effect
+    type: string
+    required: true
+  - name: parameters
+    description: The parameters of the effect
+    type: attachment
+    multiple: true
+    references: s/EffectParameter

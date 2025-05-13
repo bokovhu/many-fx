@@ -1,0 +1,58 @@
+{
+    "map": {
+        "effects": "effects"
+    },
+    "filename": "README.md"
+}
+---
+# Many-FX
+
+This repository contains many simple CLI programs, written in ANSI C, that implement a single audio effect. When you run the CLI, it will read a `.wav` file, apply the effect in memory, and write the result to a new `.wav` file.
+
+For example, the `mfx-multiply` can be used like this to scale the signal strength with a constant:
+
+```
+$ ls -la
+-rw-r--r-- 1 user user  44K Jan  1  1970 input.wav
+$ mfx-multiply input.wav output.wav --scale 0.25
+$ ls -la
+-rw-r--r-- 1 user user  44K Jan  1  1970 input.wav
+-rw-r--r-- 1 user user  44K Jan  1  1970 output.wav
+```
+
+## Building
+
+Just run `make` (or `mingw32-make`) in the root directory. This will build all the effects and put them in the `dist` directory.
+
+## Supported effects
+
+{{#each effects}}
+### **{{name}}**
+
+{{description}}
+
+{{#if parameters}}
+Parameters:
+
+```
+{{#each parameters}}
+{{#if (equals type "float")}}
+--{{kebabCase name}} <float> - {{description}} | default: 0.0
+{{/if}}
+{{#if (equals type "int")}}
+--{{kebabCase name}} <int> - {{description}} | default: 0
+{{/if}}
+{{#if (equals type "bool")}}
+--{{kebabCase name}} or --no-{{kebabCase name}} - {{description}} | default: false
+{{/if}}
+{{/each}}
+```
+
+{{/if}}
+{{/each}}
+
+## License
+
+This project is licensed under the [MIT license](LICENSE).
+
+This project uses [ProJor](https://projor.io) to generate the code. ProJor is [licensed](https://license.projor.io) under the **ProJor Free License**, or the **ProJor Commercial License**.

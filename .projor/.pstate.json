@@ -1,0 +1,96 @@
+{
+  "generatedSource": [
+    {
+      "filename": "include/effectlib/bitcrusher.h",
+      "contentHash": "0a9880c02a1be2f7e1466bef080511ae668875a6e2a982242ab13f1fc050cc40"
+    },
+    {
+      "filename": "include/effectlib/multiply.h",
+      "contentHash": "14566e96db4ebcff16d71041f9f3646bb7a03d175cccb6de5a587751f24c2d35"
+    },
+    {
+      "filename": "include/effectlib/ring_modulator.h",
+      "contentHash": "0b1a5d5238642382cf172e4bae67f373f92e41863fb04283948e25be8edcfb19"
+    },
+    {
+      "filename": "include/effectlib/simple_delay.h",
+      "contentHash": "444b8dcabc8353fc2d27412bdc2713529582bd1a82f4200e2d1271324cce1420"
+    },
+    {
+      "filename": "include/effectlib/sin.h",
+      "contentHash": "068c737a723e9c2924f15a0d62a1bf6262d39bc9fc9827858568d5197636683d"
+    },
+    {
+      "filename": "include/effectlib/tremolo.h",
+      "contentHash": "48998a8fe4de4f74df4f77cdf954603ecf2972953ba3904824a564d8e6ea6e65"
+    },
+    {
+      "filename": "include/effectlib/white_noise.h",
+      "contentHash": "c5545696f470af0de76588672bb9164233f26219fc495f06d2cb8e6d5deb1999"
+    },
+    {
+      "filename": "Makefile",
+      "contentHash": "8ea4727fcea7c02d40531ff93f43536bcdacb82bdcff0f71ac53287bf6a5ce53"
+    },
+    {
+      "filename": "README.md",
+      "contentHash": "5791e396b96c1d2e81181b5672964664b2dae3b0e0c285aa66f84a9ed46894a5"
+    },
+    {
+      "filename": "src/cli/bitcrusher/main.c",
+      "contentHash": "5da79e28d4dce386152bbf044bbb904f28bafd31bf2a23c13cf749100993c879"
+    },
+    {
+      "filename": "src/cli/multiply/main.c",
+      "contentHash": "bbd26eea653148800deba597eca17c919b24348dc06b2ae85f8fae742ccc6920"
+    },
+    {
+      "filename": "src/cli/ring_modulator/main.c",
+      "contentHash": "ba416380fae1218e6e5d691e633e15c307a4e935ff5319f7e9e69c09958f46d7"
+    },
+    {
+      "filename": "src/cli/simple_delay/main.c",
+      "contentHash": "a43b26d40882109b79bde472b2281f2218836852f80f94d0e8e60e3690b1d749"
+    },
+    {
+      "filename": "src/cli/sin/main.c",
+      "contentHash": "9fd60ea895e18856bf504c66d31709c68f2545a9e96fa6ccdcddf08ac903ca02"
+    },
+    {
+      "filename": "src/cli/tremolo/main.c",
+      "contentHash": "d99bfee777a9cf00133582bcedaf2ba13b2299a5ffe870feabe103ad48ba5039"
+    },
+    {
+      "filename": "src/cli/white_noise/main.c",
+      "contentHash": "789dbed375cc08bfb6b15cd21e0aeaac2709b0b5a71414013419642729a8d880"
+    },
+    {
+      "filename": "src/effectlib/bitcrusher.c",
+      "contentHash": "3528fee9b0d88245ebe31004b52049f9deb8c9b0ddd8b12d78bd15d246281e2c"
+    },
+    {
+      "filename": "src/effectlib/multiply.c",
+      "contentHash": "fcf9bb3ff10cc01ae37af72f517e02d894d0e7888048e8de213b3a97cf6f43d1"
+    },
+    {
+      "filename": "src/effectlib/ring_modulator.c",
+      "contentHash": "d5af754c29740c2fe6674d5be50d1560b8a5be083a8e414e84ee3956a85d7202"
+    },
+    {
+      "filename": "src/effectlib/simple_delay.c",
+      "contentHash": "24e4166f3efad6e6e69f8fb7934d9e6128ede3022a8aa0fc31eb212601126ccb"
+    },
+    {
+      "filename": "src/effectlib/sin.c",
+      "contentHash": "204cdefc753dd996d5a2e15f91c1a2fa997188d544515d81dd82c294fc6ff9fc"
+    },
+    {
+      "filename": "src/effectlib/tremolo.c",
+      "contentHash": "1b4932b75e8dd425fccb4b20fc84f3ed657320bb8107626a6556b21cb5f6dc77"
+    },
+    {
+      "filename": "src/effectlib/white_noise.c",
+      "contentHash": "dd0f9933003ba646902b2e349c989596a4e27f2d7ea1487ed83a153e97c2eeba"
+    }
+  ]
+}

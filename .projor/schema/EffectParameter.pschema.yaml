@@ -1,0 +1,8 @@
+id: s/EffectParameter
+name: EffectParameter
+description: An effect parameter
+fields:
+  - name: type
+    description: The type of the parameter
+    type: enum
+    enum: [int, float, bool]
